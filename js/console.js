@@ -1,6 +1,8 @@
-import _console from 'console';
+import _console from 'node:console';
 import _naturalSort from 'isotropic-natural-sort';
-import _process from 'process';
+import _process from 'node:process';
+
+const _sortFunction = _naturalSort();
 
 export default new _console.Console({
     inspectOptions: {
@@ -13,7 +15,7 @@ export default new _console.Console({
         maxArrayLength: Infinity,
         showHidden: false,
         showProxy: false,
-        sorted: _naturalSort()
+        sorted: _sortFunction
     },
     stderr: _process.stderr,
     stdout: _process.stdout
