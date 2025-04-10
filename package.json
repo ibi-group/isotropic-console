@@ -6,6 +6,7 @@
     },
     "description": "Console object with isotropic settings",
     "devDependencies": {
+        "eslint": "~9.8.0",
         "isotropic-dev-dependencies": "~0.3.0",
         "test-console": "~2.0.0"
     },
