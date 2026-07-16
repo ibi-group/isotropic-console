@@ -62,12 +62,15 @@ _console.log({
 The console is configured with the following inspection options:
 
 - `breakLength: Infinity` - No arbitrary line breaks in output
-- `colors: false` - No ANSI color codes in object inspection (colors still work for console.error, etc.)
+- `colors: false` - No ANSI color codes are added when inspecting objects
 - `compact: false` - Full, readable formatting rather than compressed
 - `customInspect: true` - Respects custom [util.inspect.custom] implementations
 - `depth: Infinity` - No depth limitation for nested objects
+- `getters: false` - Getters are not invoked during inspection
 - `maxArrayLength: Infinity` - Arrays are not truncated
-- `sorted: true` - Object properties are sorted using natural sort
+- `showHidden: false` - Non-enumerable properties are not shown
+- `showProxy: false` - Proxy internals are not revealed
+- `sorted` - Object properties are sorted using a natural sort comparator
 
 ### Natural Sorting
 
@@ -143,28 +146,28 @@ const _deepObject = {
     }
 };
 
-_console.log(deepObject);
+_console.log(_deepObject);
 // Output will show the complete object with all nesting levels
 // and the full array, unlike standard console which would truncate
 ```
 
-## Integration with Logging Libraries
+## Using as the Global Console
 
-isotropic-console can be used as a replacement for the default console with many logging libraries:
+Because it is a real `Console` instance, isotropic-console can replace the global console so that every `console.*` call in your application uses the enhanced settings:
 
 ```javascript
 import _console from 'isotropic-console';
-import _winston from 'winston';
 
-// Configure winston to use isotropic-console for console transport
-const _logger = _winston.createLogger({
-    transports: [
-        new winston.transports.Console({
-            console: _console
-        })
-    ]
+globalThis.console = _console;
+
+console.log({
+    item10: 'value',
+    item2: 'value',
+    item1: 'value'
 });
 ```
+
+It can also be handed to any library or function that accepts a `Console`-compatible object.
 
 ## Contributing
 
