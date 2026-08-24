@@ -1,4 +1,13 @@
-# Changelog
+# isotropic-console Changelog
+
+## 0.4.1 - 2026-08-23
+
+### Changed
+
+- Recommends `node ^26.7.0` / `npm ^11.19.0`.
+- `repository` now uses npm's preferred object form with explicit `type` and `url` properties rather than the `github:` shorthand. This is package metadata only.
+
+No runtime behavior changed in this release.
 
 ## 0.4.0 - 2026-07-15
 
@@ -20,8 +29,10 @@ Nothing to change beyond running on Node 26. If you snapshot-test console output
 ### Internal
 
 - Test suite migrated from Mocha to the built-in `node --test` runner.
-- The Babel toolchain and the `build` / `prepare` build scripts were removed; the source moved from `js/` to `lib/`.
-- `isotropic-dev-dependencies` updated to `~0.4.0`; the separately pinned `eslint` dev dependency was dropped.
+- The Babel toolchain and the `build` / `prepare` build scripts were removed.
+- The source moved from `js/` to `lib/`.
+- `isotropic-dev-dependencies` updated to `~0.4.0`.
+- The separately pinned `eslint` dev dependency was dropped.
 
 ## 0.3.1 - 2025-04-10
 
@@ -67,7 +78,9 @@ import _console from 'isotropic-console';
 
 ### Changed
 
-- The entire dev toolchain was replaced by a single `isotropic-dev-dependencies` dev dependency; Babel, ESLint, and nyc configuration blocks were removed from `package.json` in favor of shared configuration. `isotropic-natural-sort` `~0.7.0`.
+- The entire dev toolchain was replaced by a single `isotropic-dev-dependencies` dev dependency.
+- Babel, ESLint, and nyc configuration blocks were removed from `package.json` in favor of shared configuration.
+- `isotropic-natural-sort` bumped to `~0.7.0`.
 - Recommends `node ^14.15.5` / `npm ^7.5.4`.
 
 No runtime behavior changed in this release.
